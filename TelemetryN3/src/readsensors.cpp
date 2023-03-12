@@ -33,7 +33,6 @@ void init_mpu(){
     mpu.setFilterBandwidth(MPU6050_BAND_5_HZ);
   }
 
-
 void init_bmp(){
   debugln("BMP initilization");
   if(!bmp.begin()){

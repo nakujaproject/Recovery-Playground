@@ -5,6 +5,7 @@
 #include "functions.h"
 
 
+
 int access_point = 0;
 
 TaskHandle_t WiFiTelemetryTaskHandle;
@@ -17,6 +18,7 @@ static uint16_t wifi_queue_length = 100;
 static QueueHandle_t wifi_telemetry_queue;
 static QueueHandle_t sdwrite_queue;
 static QueueHandle_t gps_queue;
+
 
 
 // struct Data readData()
@@ -47,6 +49,7 @@ void GetDataTask(void *parameter)
     if (xQueueSend(wifi_telemetry_queue, (void *)&ld, 0) != pdTRUE)
     {
       droppedWiFiPackets++;
+      delay(1000);
     }
 
     debugf("Dropped WiFi Packets : %d\n", droppedWiFiPackets);
@@ -83,10 +86,11 @@ void WiFiTelemetryTask(void *parameter)
 
 void setup()
 {
-
   Serial.begin(BAUD_RATE);
 
+
   debugln("Starting program");
+  
 
   // set up ejection pin
   pinMode(EJECTION_PIN, OUTPUT);

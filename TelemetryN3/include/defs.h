@@ -34,7 +34,7 @@
 #define SD_CS_PIN 5
 
 // Pin to start ejection charge
-#define EJECTION_PIN 4
+// #define EJECTION_PIN 4
 
 //buzzer signal pin
 #define buzzer_pin 32
@@ -52,26 +52,25 @@
 
 #define GPS_TX_PIN 17
 #define GPS_RX_PIN 16
+#define EJECTION_PIN 18
 
 //defining the two CPU cores to be used
 extern const BaseType_t pro_cpu;
 extern const BaseType_t app_cpu;
 
 // // network credentials
-// #define ssid "iPIC-WIRELESS"
-// #define password "987654321jica"
+#define ssid ""
+#define password ""
 
-// network credentials
-#define ssid "onboard"
-#define password "987654321"
+
 
 // MQTT Broker IP address
-#define mqtt_server "192.168.0.107" 
+#define mqtt_server ""
 //size of the data to be transmitted. can be increased or decreased based on the quantity of data you will transmit
 #define MQTT_BUFFER_SIZE 300
 #define MQQT_PORT 1883
 
-extern WiFiClient espClient;  
+extern WiFiClient espClient; 
 extern PubSubClient client;
 
 extern float BASE_ALTITUDE;
@@ -101,7 +100,6 @@ struct Data
     float longitude;
     float gpsAltitude;
     float temperature;
-    float RSSI;
 };
 // SensorReadings contains the measurement we are getting
 // from the sensors bmp and mpu

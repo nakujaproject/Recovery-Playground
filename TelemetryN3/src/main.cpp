@@ -102,6 +102,7 @@ void setup()
  
 
   setup_wifi();
+  setupOTA();
   client.setServer(mqtt_server, MQQT_PORT);
   client.setCallback(mqttCallback);
 
@@ -127,4 +128,5 @@ void setup()
 }
 void loop()
 {
+  handleOTA();
 }

@@ -75,14 +75,16 @@ void setup() {
   pinMode(button, INPUT);
   Serial.print("\n\nStarting program");
   setup_wifi();
+  setupOTA();
   client.setServer(mqtt_server, 1883);
   client.setCallback(callback);
 }
-  void loop() {
+void loop() {
     // put your main code here, to run repeatedly:
+    handleOTA();
 //    client.subscribe(outTopic);
    //client.publish(outTopic, "We are gang ma nigga");
-    if (!client.connected())  // Reconnect if connection is lost
+  if (!client.connected())  // Reconnect if connection is lost
     {
       reconnect();
     }

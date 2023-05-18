@@ -2,6 +2,7 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include "defs.h"
+#include "OTA.h"
 
 WiFiClient espClient;
 PubSubClient client(espClient);

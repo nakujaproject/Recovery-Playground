@@ -27,16 +27,6 @@ void loop() {
   }
     if (gps.location.isUpdated())
     {
-      StaticJsonDocument<80> doc;
-      char output[80];
-      
-      doc['l'] = (gps.location.rawLat().deg);
-      doc['L'] = (gps.location.rawLng().deg);
-      doc['V'] = (gps.speed.mps());
-      doc['S'] = (gps.satellites.value());
-      
-      serializeJson(doc, output);
-
       //Number pf sattelites in use
       Serial.print("Number of satellites = ");
       Serial.println(gps.satellites.value());

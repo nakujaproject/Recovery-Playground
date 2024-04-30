@@ -22,6 +22,14 @@ void setup() {
   //setup sdcard and eeprom to read data from esp32
   Serial.begin(115200);
 
+  //setup flash memory
+  flash.begin();
+  flash.eraseChip();
+
+  Serial.print(F("Flash size is: "));
+  Serial.print((long)(flash.getCapacity()/1000));
+  Serial.println(F("kb"));
+
   //Check for status of sensors
   if(!altimeter.begin()){
     Serial.println("altimeter180 not found");
@@ -51,14 +59,6 @@ void setup() {
   gyroscope.setFilterBandwidth(gyroscope6050_BAND_5_HZ);
   Serial.println("Filter bandwidth set to: ");
   Serial.println(gyroscope.getFilterBandwidth());
-
-  //setup flash memory
-  flash.begin();
-  flash.eraseChip();
-
-  Serial.print(F("Flash size is: "));
-  Serial.print((long)(flash.getCapacity()/1000));
-  Serial.println(F("kb"));
 
   delay(100);  
 }
